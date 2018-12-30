@@ -79,8 +79,14 @@ case $1 in
 		p)git checkout -b rcprd/$3 master;;
 	esac;;	
 	fi)	print "finish" 
+    xx=`git branch | grep \* | cut -d ' ' -f2`
 	case $2 in 
-		du)git merge du/$3 -m "merge :du/$3";;
+		du)
+         git checkout du/$3
+         git fetch
+         git pull
+         git checkout $xx
+         git merge du/$3 -m "merge :du/$3";;
 		du-r)git rebase du/$3;;
 		du-f)git merge du/$3;;
 		ap)git merge ap/$3 ;;
