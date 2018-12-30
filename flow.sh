@@ -10,7 +10,14 @@ end=$'\e[0m'
 is_clean(){
 return `git status | grep nothing | wc -l`
 }
-
+update_frm_orig(){
+  echo -e "${yel}>flow update form origin :$1${end}"
+  xx=`git branch | grep \* | cut -d ' ' -f2`
+  git checkout $1
+  git fetch
+  git pull
+  git checkout $xx
+}
 print(){
 echo -e "${yel}>flow :${end} ${mag}$1${end}"
 }
@@ -26,6 +33,9 @@ case $1 in
 		f) git rebase --skip;;
 		a) git rebase --abort;;
 	esac;;
+	f) git fetch;;
+	pl) git pull;;
+	ps) git push;;
 	m) git mergetool --tool=vimdiff;;
 	g) git tag -ln $2;;
 	a) print "git add --all"
@@ -62,16 +72,24 @@ case $1 in
 		prd) git checkout master;;
 	esac;;
 	st)	print "start" 
+    git checkout master
+    git fetch
+    git pull
 	case $2 in 
 		du) git checkout -b du/$3 master ;;
 		ar) git checkout -b ar/$3 master ;;
 		ap) git checkout -b ap/$3 master ;;
-		t)git checkout -b rctig/$3 tig;;
+		t)  git checkout tig
+           git fetch
+           git pull
+           git checkout -b rctig/$3 tig;;
 		p)git checkout -b rcprd/$3 master;;
 	esac;;	
 	fi)	print "finish" 
 	case $2 in 
-		du)git merge du/$3 -m "merge :du/$3";;
+		du)
+        update_frm_orig($3)
+         git merge du/$3 -m "merge :du/$3";;
 		du-r)git rebase du/$3;;
 		du-f)git merge du/$3;;
 		ap)git merge ap/$3 ;;
