@@ -10,10 +10,23 @@ end=$'\e[0m'
 
 echo -e "${yel}>flow.rebase with params $1 $2 $3"
 
-case $1 in
- s) git rebase $2/$3;;
- c) git rebase --continue;;
- f) git rebase --skip;;
- a) git rebase --abort;;
+case $1 in 
+		du | ap | ar )git checkout $1/$2;;
+		ap) git checkout ap/$3 ;;
+		t | p)
+         if [ "$1pb"!= "" ] 
+		   then
+		tb=`git branch |grep -v \* | grep rctig/`
+		   if [ "$tb" != "" ] 
+		   then
+			git checkout $tb 
+		   fi;;
+	   	p)
+		pb=`git branch |grep -v \* | grep rcprd/`
+		   if [ "$pb" != "" ] 
+		   then
+			git checkout $pb
+		   fi;;
+		tig) git checkout tig;;
+		prd) git checkout master;;
 esac
-
