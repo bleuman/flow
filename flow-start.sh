@@ -9,16 +9,6 @@ end=$'\e[0m'
 
 
 echo -e "${yel}>flow.start with params $1 ${end}"
-}
-
-update_frm_orig(){
-  echo -e "${yel}>flow update form origin :$1${end}"
-  xx=`git branch | grep \* | cut -d ' ' -f2`
-  git checkout $1
-  git fetch
-  git pull
-  git checkout $xx
-}
 
 
 git checkout master
@@ -28,7 +18,12 @@ case $1 in
    git checkout -b $1/$3 master
    git push --set-upstream origin $1$2;;
  t)
-   update_frm_orig "tig"
+   echo -e "${yel}>flow update form origin :tig${end}"
+   xx=`git branch | grep \* | cut -d ' ' -f2`
+   git checkout tig
+   git fetch
+   git pull
+   git checkout $xx
    git checkout -b rctig/$3 tig
    git push --set-upstream origin rctig/$3;;
  p) 
