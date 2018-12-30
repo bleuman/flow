@@ -76,14 +76,17 @@ case $1 in
     git fetch
     git pull
 	case $2 in 
-		du) git checkout -b du/$3 master ;;
-		ar) git checkout -b ar/$3 master ;;
-		ap) git checkout -b ap/$3 master ;;
-		t)  git checkout tig
-           git fetch
-           git pull
-           git checkout -b rctig/$3 tig;;
-		p)git checkout -b rcprd/$3 master;;
+		du) git checkout -b du/$3 master
+	 	 git push --set-upstream origin du/$3;;
+		ar) git checkout -b ar/$3 master
+		 git push --set-upstream origin ar/$3;;
+		ap) git checkout -b ap/$3 master
+	   	 git push --set-upstream origin ap/$3;;
+		t)  update_frm_orig "tig"
+                 git checkout -b rctig/$3 tig
+                git push --set-upstream origin rctig/$3;;
+        	p) git checkout -b rcprd/$3 master
+		   git push --set-upstream origin rcprd/$3;;
 	esac;;	
 	fi)	print "finish" 
 	case $2 in 
