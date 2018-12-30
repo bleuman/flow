@@ -10,6 +10,7 @@ end=$'\e[0m'
 is_clean(){
 return `git status | grep nothing | wc -l`
 }
+
 update_frm_orig(){
   echo -e "${yel}>flow update form origin :$1${end}"
   xx=`git branch | grep \* | cut -d ' ' -f2`
