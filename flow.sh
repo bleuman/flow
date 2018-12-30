@@ -39,23 +39,7 @@ case $1 in
 	c) git add --all
 	   git commit -m "commit $2 on `git branch | grep \* | cut -d ' ' -f2`";;
 	k) flow-checkout.sh $2 $3 $4;;
-	st)	print "start" 
-    git checkout master
-    git fetch
-    git pull
-	case $2 in 
-		du) git checkout -b du/$3 master
-	 	 git push --set-upstream origin du/$3;;
-		ar) git checkout -b ar/$3 master
-		 git push --set-upstream origin ar/$3;;
-		ap) git checkout -b ap/$3 master
-	   	 git push --set-upstream origin ap/$3;;
-		t)  update_frm_orig "tig"
-                 git checkout -b rctig/$3 tig
-                git push --set-upstream origin rctig/$3;;
-        	p) git checkout -b rcprd/$3 master
-		   git push --set-upstream origin rcprd/$3;;
-	esac;;	
+	st)	flow-start.sh $2 $3 ;;
 	fi)	print "finish" 
 	case $2 in 
 		du)
