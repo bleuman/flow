@@ -23,16 +23,7 @@ echo -e "${yel}>flow :${end} ${mag}$1${end}"
 }
 print "runing with param $1 $2 $3 $4 $5 $6 $7 $8"
 case $1 in
-	r) case $2 in
-		s) case $3 in
-		    f) git rebase du/$4;;
-		    h) git rebase ap/$4;;
-		    b) git rebase ar/$4;;
-		   esac;;
-		c) git rebase --continue;;
-		f) git rebase --skip;;
-		a) git rebase --abort;;
-	esac;;
+	r) flow-rebase.sh $2 $3;;
 	f) git fetch;;
 	pl) git pull;;
 	ps) git push;;
