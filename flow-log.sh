@@ -11,8 +11,8 @@ end=$'\e[0m'
 echo -e "${yel}>flow.log with params $1 "
 
 case $1 in
- a)git log —-all —-oneline —-graph;;
+ a)git log --all --oneline --graph;;
  o)git log --graph --oneline;;
  b)git log --graph --oneline --first-parent master..;;
  *) git log;;
-esac;;
+esac

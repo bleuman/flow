@@ -44,7 +44,7 @@ case $1 in
 	   git branch $2 $3 $4;;
 	s) print "git status"
 	   git status ;;
-	l) flow-log.sh $2
+	l) flow-log.sh $2;;
 	c) git add --all
 	   git commit -m "commit $2 on `git branch | grep \* | cut -d ' ' -f2`";;
 	k)
