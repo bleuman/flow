@@ -65,11 +65,17 @@ case $1 in
 		prd) git checkout master;;
 	esac;;
 	st)	print "start" 
+    git checkout master
+    git fetch
+    git pull
 	case $2 in 
 		du) git checkout -b du/$3 master ;;
 		ar) git checkout -b ar/$3 master ;;
 		ap) git checkout -b ap/$3 master ;;
-		t)git checkout -b rctig/$3 tig;;
+		t)  git checkout tig
+           git fetch
+           git pull
+           git checkout -b rctig/$3 tig;;
 		p)git checkout -b rcprd/$3 master;;
 	esac;;	
 	fi)	print "finish" 
