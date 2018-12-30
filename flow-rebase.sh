@@ -8,7 +8,7 @@ cyn=$'\e[1;36m'
 end=$'\e[0m'
 
 
-echo -e "${yel}>flow.rebase with params $1 $2 $3"
+echo -e "${yel}>flow.rebase with params $1 $2 $3${end}"
 
 case $1 in
  s) git rebase $2/$3;;

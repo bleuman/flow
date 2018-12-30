@@ -8,11 +8,12 @@ cyn=$'\e[1;36m'
 end=$'\e[0m'
 
 
-echo -e "${yel}>flow.log with params $1 "
+echo -e "${yel}>flow.log with params $1 ${end}"
 
 case $1 in
  a)git log --all --oneline --graph;;
  o)git log --graph --oneline;;
  b)git log --graph --oneline --first-parent master..;;
- *) git log;;
+ g)git log --graph --oneline;;
+ *)git log --oneline;;
 esac
