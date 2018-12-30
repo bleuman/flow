@@ -13,7 +13,7 @@ echo -e "${yel}>flow.checkout with params $1 $2 $3${end}"
 case $1 in 
 du | ap | ar )git checkout $1/$2;;
 t | p)
- if [ "$1"!= "t" ] 
+ if [ "$1" == "t" ] 
   then
    br=`git branch |grep -v \* | grep rctig/`
   else
