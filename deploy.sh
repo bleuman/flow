@@ -1,4 +1,4 @@
 #!/bin/bash
-#123
-cp flow.sh /data/data/com.termux/files/usr/bin/dflow.sh
+cp ~/storage/shared/gitw/flow-sf-2sl/*.sh /data/data/com.termux/files/usr/bin/
+chmod +x /data/data/com.termux/files/usr/bin/*.sh
 
