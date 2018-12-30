@@ -44,11 +44,7 @@ case $1 in
 	   git branch $2 $3 $4;;
 	s) print "git status"
 	   git status ;;
-	l) case $2 in
-			o) git log --graph --oneline;;
-			b) git log --graph --oneline --first-parent master..;;
-			a) git log --graph --oneline --all;;
-		esac;;
+	l) flow-log.sh $2
 	c) git add --all
 	   git commit -m "commit $2 on `git branch | grep \* | cut -d ' ' -f2`";;
 	k)
