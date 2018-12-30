@@ -26,6 +26,9 @@ case $1 in
 		f) git rebase --skip;;
 		a) git rebase --abort;;
 	esac;;
+	f) git fetch;;
+	pl) git pull;;
+	ps) git push;;
 	m) git mergetool --tool=vimdiff;;
 	g) git tag -ln $2;;
 	a) print "git add --all"
