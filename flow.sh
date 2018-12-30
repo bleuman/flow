@@ -38,26 +38,7 @@ case $1 in
 	l) flow-log.sh $2;;
 	c) git add --all
 	   git commit -m "commit $2 on `git branch | grep \* | cut -d ' ' -f2`";;
-	k)
-	case $2 in 
-		du) git checkout du/$3 ;;
-		ap) git checkout ap/$3 ;;
-		ar) git checkout ar/$3 ;;
-		t)
-		tb=`git branch |grep -v \* | grep rctig/`
-		   if [ "$tb" != "" ] 
-		   then
-			git checkout $tb 
-		   fi;;
-	   	p)
-		pb=`git branch |grep -v \* | grep rcprd/`
-		   if [ "$pb" != "" ] 
-		   then
-			git checkout $pb
-		   fi;;
-		tig) git checkout tig;;
-		prd) git checkout master;;
-	esac;;
+	k) flow-checkout.sh $2 $3 $4;;
 	st)	print "start" 
     git checkout master
     git fetch

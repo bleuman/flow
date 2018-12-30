@@ -11,22 +11,18 @@ end=$'\e[0m'
 echo -e "${yel}>flow.rebase with params $1 $2 $3"
 
 case $1 in 
-		du | ap | ar )git checkout $1/$2;;
-		ap) git checkout ap/$3 ;;
-		t | p)
-         if [ "$1pb"!= "" ] 
-		   then
-		tb=`git branch |grep -v \* | grep rctig/`
-		   if [ "$tb" != "" ] 
-		   then
-			git checkout $tb 
-		   fi;;
-	   	p)
-		pb=`git branch |grep -v \* | grep rcprd/`
-		   if [ "$pb" != "" ] 
-		   then
-			git checkout $pb
-		   fi;;
-		tig) git checkout tig;;
-		prd) git checkout master;;
+du | ap | ar )git checkout $1/$2;;
+t | p)
+ if [ "$1"!= "t" ] 
+  then
+   br=`git branch |grep -v \* | grep rctig/`
+  else
+   br=`git branch |grep -v \* | grep rcprd/`
+ fi
+  if [ "$br" != "" ] 
+  then
+   git checkout $br
+  fi;;
+tig) git checkout tig;;
+prd) git checkout master;;
 esac
