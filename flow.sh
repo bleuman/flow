@@ -10,7 +10,14 @@ end=$'\e[0m'
 is_clean(){
 return `git status | grep nothing | wc -l`
 }
-
+update_frm_orig(){
+  echo -e "${yel}>flow update form origin :$1${end}"
+  xx=`git branch | grep \* | cut -d ' ' -f2`
+  git checkout $1
+  git fetch
+  git pull
+  git checkout $xx
+}
 print(){
 echo -e "${yel}>flow :${end} ${mag}$1${end}"
 }
@@ -79,13 +86,9 @@ case $1 in
 		p)git checkout -b rcprd/$3 master;;
 	esac;;	
 	fi)	print "finish" 
-    xx=`git branch | grep \* | cut -d ' ' -f2`
 	case $2 in 
 		du)
-         git checkout du/$3
-         git fetch
-         git pull
-         git checkout $xx
+        update_frm_orig($3)
          git merge du/$3 -m "merge :du/$3";;
 		du-r)git rebase du/$3;;
 		du-f)git merge du/$3;;
