@@ -15,8 +15,8 @@ git checkout master
 git pull
 case $1 in 
  du | ap | ar)
-   git checkout -b $1/$3 master
-   git push --set-upstream origin $1$2;;
+   git checkout -b $1/$2 master
+   git push --set-upstream origin $1/$2;;
  t)
    echo -e "${yel}>flow update form origin :tig${end}"
    xx=`git branch | grep \* | cut -d ' ' -f2`
@@ -24,9 +24,9 @@ case $1 in
    git fetch
    git pull
    git checkout $xx
-   git checkout -b rctig/$3 tig
-   git push --set-upstream origin rctig/$3;;
+   git checkout -b rctig/$2 tig
+   git push --set-upstream origin rctig/$2;;
  p) 
-    git checkout -b rcprd/$3 master
-    git push --set-upstream origin rcprd/$3;;
+    git checkout -b rcprd/$2 master
+    git push --set-upstream origin rcprd/$2;;
 esac

@@ -40,7 +40,7 @@ case $1 in
 	c) git add --all
 	   git commit -m "commit $2 on `git branch | grep \* | cut -d ' ' -f2`";;
 	k) flow-checkout.sh $2 $3 $4;;
-	st)	flow-start.sh $2 $3 ;;
+	st)	flow-start.sh $2 $3 $4 $5 ;;
 	fi)	print "finish" 
 	case $2 in 
 		du)
