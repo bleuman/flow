@@ -88,7 +88,7 @@ case $1 in
 	fi)	print "finish" 
 	case $2 in 
 		du)
-        update_frm_orig($3)
+        update_frm_orig du/$3
          git merge du/$3 -m "merge :du/$3";;
 		du-r)git rebase du/$3;;
 		du-f)git merge du/$3;;
