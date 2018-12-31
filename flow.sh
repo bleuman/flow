@@ -55,4 +55,7 @@ case $1 in
 	fi)	flow-finish.sh $2 $3 $4 $5 ;;
 	fp)	flow-finishp.sh $2 $3 $4 $5 ;;
 	p)	print "$2 $3 $4 $5 $6 $7 $8 $9" ;;
+	-*)	oo="$(echo -e $2 | sed 's/./& /g')"
+		echo $oo
+		flow.sh $oo;;
 esac
