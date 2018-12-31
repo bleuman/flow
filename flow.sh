@@ -11,9 +11,10 @@ print(){
 echo -e "${yel}>flow :${end} ${mag}$1${end}"
 }
 print "runing with param $1 $2 $3 $4 $5 $6 $7 $8"
-if ["$1" == "" ]
+if [ "$1" == "" ]
 then
 	echo "
+	flow usage:
 	r) flow-rebase.sh $2 $3;;
 	f) git fetch;;
 	pl) git pull;;
