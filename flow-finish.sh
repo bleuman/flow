@@ -15,11 +15,11 @@ if [ "$1" == "" ]
 then
 	echo "
 	Usage : 
-	du)
-	du-r)
-	du-f)
-	t)
-	p)    
+	du) finish du/x
+	du-r) rebase du/x
+	du-m) merge du/x
+	t) finish rctig/$2
+	p) finish rcprd/$2
 	"
 	exit
 fi
@@ -35,21 +35,23 @@ case $1 in
 		git pull
 		git checkout $xx
 		git merge du/$2 -m "merge :du/$2";;
-	du-r)git rebase du/$2;;
-	du-f)git merge du/$2;;
-		ap)git merge ap/$2 ;;
+	du-r)
+		git rebase du/$2;;
+	du-m)
+		git merge du/$2;;
+	ap)
+		git merge ap/$2 ;;
 	t)
 		git checkout tig
 		git merge rctig/$2
 		git tag -a "vt$2" -m "tag msg: $3"
 		git branch -d rctig/$2
-		git push origin --delete rctig/$2
-	;;
+		git push origin --delete rctig/$2;;
 	p)
 		git checkout master
 		git merge rcprd/$2
 		git tag -a "vp$2" -m "tag msg: $3"
 		git branch -d rcprd/$2
-	;;
+		git push origin --delete rcprd/$2;;
 esac
 	

@@ -19,6 +19,7 @@ case $1 in
 			git checkout tig
 			git merge du/$2
 			git branch -d du/$2
+			git push origin --delete du/$2
 			git checkout $xx
 		;;
 		ap) 
