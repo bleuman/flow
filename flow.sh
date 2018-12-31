@@ -39,6 +39,7 @@ case $1 in
 	f) git fetch;;
 	pl) git pull;;
 	ps) git push --tags;;
+    pa) git push --all origin;;
 	m) git mergetool --tool=vimdiff;;
 	g) git tag -ln $2;;
 	a) print "git add --all"
