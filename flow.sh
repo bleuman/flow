@@ -58,4 +58,5 @@ case $1 in
 	-*)	oo="$(echo -e $2 | sed 's/./& /g')"
 		echo $oo
 		flow.sh $oo;;
+	git) git $2 $3 $4 $5 $6 $7 $8 $9;;
 esac
