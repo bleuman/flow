@@ -36,7 +36,7 @@ then
 fi
 case $1 in
 	r) flow-rebase.sh $2 $3;;
-	f) git fetch;;
+	f) git fetch $2;;
 	pl) git pull;;
 	ps) git push --tags;;
     pa) git push --all origin;;
