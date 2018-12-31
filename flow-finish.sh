@@ -43,6 +43,7 @@ case $1 in
 		git merge rctig/$2
 		git tag -a "vt$2" -m "tag msg: $3"
 		git branch -d rctig/$2
+		git push origin --delete rctig/$2
 	;;
 	p)
 		git checkout master
