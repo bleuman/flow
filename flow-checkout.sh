@@ -17,11 +17,12 @@ then
 	t | p) git branch  rctig| rcprd
 	tig) git checkout tig
 	prd) git checkout master
+	r) git checkout -b 2 origin/2
 	"
 	exit
 fi
 case $1 in 
-du | ap | ar )git checkout $1/$2;;
+du | ap | ar )git fetch && git checkout $1/$2;;
 t | p)
  if [ "$1" == "t" ] 
   then
@@ -31,8 +32,9 @@ t | p)
  fi
   if [ "$br" != "" ] 
   then
-   git checkout $br
+   git fetch && git checkout $br
   fi;;
-tig) git checkout tig;;
-prd) git checkout master;;
+tig) git fetch && git checkout tig;;
+prd)git fetch && git checkout master;;
+r)git fetch && git checkout -b $2 origin/$2;;
 esac
