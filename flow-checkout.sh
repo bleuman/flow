@@ -35,4 +35,5 @@ t | p)
   fi;;
 tig) git checkout tig;;
 prd) git checkout master;;
+r) git checkout -b $2 origin/$2;;
 esac
