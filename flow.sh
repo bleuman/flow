@@ -38,7 +38,7 @@ case $1 in
 	r) flow-rebase.sh $2 $3;;
 	f) git fetch;;
 	pl) git pull;;
-	ps) git push;;
+	ps) git push --tags;;
 	m) git mergetool --tool=vimdiff;;
 	g) git tag -ln $2;;
 	a) print "git add --all"

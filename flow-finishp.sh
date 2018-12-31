@@ -26,6 +26,7 @@ case $1 in
 			git checkout master
 			git merge ap/$2
 			git tag -a "ap-$2" -m "tag msg: $3"
+			git push --tags
 			git checkout tig
 			git merge ap/$2
 			git branch -d ap/$2
