@@ -9,7 +9,18 @@ end=$'\e[0m'
 
 
 echo -e "${yel}>flow.log with params $1 ${end}"
-
+if [ "$1" == "" ]
+then
+	echo "
+	Usage : 
+	a)git log --all --oneline --graph;;
+	o)git log --graph --oneline;;
+	b)git log --graph --oneline --first-parent master..;;
+	g)git log --graph --oneline;;
+	*)git log --oneline;;
+	"
+	exit
+fi
 case $1 in
  a)git log --all --oneline --graph;;
  o)git log --graph --oneline;;

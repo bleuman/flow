@@ -9,7 +9,17 @@ end=$'\e[0m'
 
 
 echo -e "${yel}>flow.rebase with params $1 $2 $3${end}"
-
+if [ "$1" == "" ]
+then
+	echo "
+	Usage : 
+	s) git rebase 2/3;;
+	c) git rebase --continue;;
+	f) git rebase --skip;;
+	a) git rebase --abort;;
+	"
+	exit
+fi
 case $1 in
  s) git rebase $2/$3;;
  c) git rebase --continue;;

@@ -9,7 +9,16 @@ end=$'\e[0m'
 
 
 echo -e "${yel}>flow.start with params $1 ${end}"
-
+if [ "$1" == "" ]
+then
+	echo "
+	Usage : 
+	du | ap | ar)  
+	t)
+	p)    
+	"
+	exit
+fi
 
 git checkout master
 git pull

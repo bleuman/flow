@@ -9,7 +9,17 @@ end=$'\e[0m'
 
 
 echo -e "${yel}>flow.checkout with params $1 $2 $3${end}"
-
+if [ "$1" == "" ]
+then
+	echo "
+	Usage : 
+	du | ap | ar )git checkout 1/2
+	t | p) git branch  rctig| rcprd
+	tig) git checkout tig
+	prd) git checkout master
+	"
+	exit
+fi
 case $1 in 
 du | ap | ar )git checkout $1/$2;;
 t | p)
