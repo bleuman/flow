@@ -15,26 +15,22 @@ if [ "$1" == "" ]
 then
 	echo "
 	flow usage:
-	r) flow-rebase.sh $2 $3;;
-	f) git fetch;;
-	pl) git pull;;
-	ps) git push;;
-	m) git mergetool --tool=vimdiff;;
-	g) git tag -ln $2;;
-	a) print "git add --all"
-	   git add --all;;
-	b) print "git branch $2 $3 $4"
-	   git branch $2 $3 $4;;
-	s) print "git status"
-	   git status ;;
-	l) flow-log.sh $2;;
-	c) git add --all
-	   git commit -m "commit $2 on `git branch | grep \* | cut -d ' ' -f2`";;
-	k) flow-checkout.sh $2 $3 $4;;
-	st)	flow-start.sh $2 $3 $4 $5 ;;
-	fi)	flow-finish.sh $2 $3 $4 $5 ;;
-	fp)	flow-finishp.sh $2 $3 $4 $5 ;;
-	p)	print "$2 $3 $4 $5 $6 $7 $8 $9" ;;
+	r) flow-rebase.sh 2 3
+	f) git fetch
+	pl) git pull
+	ps) git push
+	m) git mergetool --tool=vimdiff
+	g) git tag -ln 2
+	a) git add --all
+	b) git branch 2 3 4
+	s) git status 2 3 4
+	l) flow-log.sh 2
+	c) git add --all & commit 2 on actual branch
+	k) flow-checkout.sh  2  3  4
+	st)	flow-start.sh  2  3  4  5 
+	fi)	flow-finish.sh  2  3  4  5 
+	fp)	flow-finishp.sh  2  3  4  5
+	p)	print 
 	"
 	exit
 fi
@@ -50,7 +46,7 @@ case $1 in
 	b) print "git branch $2 $3 $4"
 	   git branch $2 $3 $4;;
 	s) print "git status"
-	   git status ;;
+	   git status $2 $3 $4;;
 	l) flow-log.sh $2;;
 	c) git add --all
 	   git commit -m "commit $2 on `git branch | grep \* | cut -d ' ' -f2`";;
