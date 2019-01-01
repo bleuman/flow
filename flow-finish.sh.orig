@@ -10,6 +10,7 @@ end=$'\e[0m'
 
 echo -e "${yel}>flow.finish with params $1 ${end}"
 
+echo -e "${yel}>flow.start with params $1 ${end}"
 if [ "$1" == "" ]
 then
 	echo "
@@ -47,14 +48,22 @@ case $1 in
 		git merge t/$2
 		git tag -a "vt$2" -m "tag msg: $3"
 		git push --tags
+<<<<<<< HEAD
+		git branch -d rctig/$2
+=======
 		git branch -d t/$2
+>>>>>>> tig
 		git push origin --delete t/$2;;
 	p)
 		git checkout master
 		git merge p/$2
 		git tag -a "vp$2" -m "tag msg: $3"
 		git push --tags
+<<<<<<< HEAD
+		git branch -d rcprd/$2
+=======
 		git branch -d p/$2
+>>>>>>> tig
 		git push origin --delete p/$2;;
 esac
 	
