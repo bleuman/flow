@@ -43,17 +43,17 @@ case $1 in
 		git merge ap/$2 ;;
 	t)
 		git checkout tig
-		git merge rctig/$2
+		git merge t/$2
 		git tag -a "vt$2" -m "tag msg: $3"
 		git push --tags
-		git branch -d rctig/$2
-		git push origin --delete rctig/$2;;
+		git branch -d t/$2
+		git push origin --delete t/$2;;
 	p)
 		git checkout master
-		git merge rcprd/$2
+		git merge p/$2
 		git tag -a "vp$2" -m "tag msg: $3"
 		git push --tags
-		git branch -d rcprd/$2
-		git push origin --delete rcprd/$2;;
+		git branch -d p/$2
+		git push origin --delete p/$2;;
 esac
 	
