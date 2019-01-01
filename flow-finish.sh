@@ -24,11 +24,13 @@ then
 	exit
 fi
 
+xx=`git branch | grep \* | cut -d ' ' -f2`
 git checkout master
 git pull
+git checkout $xx
 case $1 in 
 	du)
-		echo -e "${yel}>flow update form origin :du/$2 ${end}"
+
 		xx=`git branch | grep \* | cut -d ' ' -f2`
 		git checkout "du/$2"
 		git fetch
