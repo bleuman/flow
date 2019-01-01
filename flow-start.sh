@@ -9,7 +9,7 @@ end=$'\e[0m'
 
 
 echo -e "${yel}>flow.start with params $1 ${end}"
-if [ "$1" == "" ]
+if [ "$1" == ""  ] || [ "$2" == ""  ]
 then
 	echo "
 	Usage : 
@@ -20,23 +20,25 @@ then
 	exit
 fi
 
-git checkout master
-git pull
 case $1 in 
- du | ap | ar)
-   git checkout -b $1/$2 master
-   git tag -a "s-$1/$2" -m "Starting $1/$2 from master"
-   git push --set-upstream origin $1/$2;;
- t)
-   echo -e "${yel}>flow update form origin :tig${end}"
-   xx=`git branch | grep \* | cut -d ' ' -f2`
-   git checkout tig
-   git fetch
+ du | ap | ar | p | t )
+   if [ `git tag -l "s-$1/$2"` == "s-$1/$2" ]
+   then
+	echo "$1/$2 deja cree"
+	exit
+   fi
+
+   base="master"
+   if [ "$1" == "t" ]
+   then
+	base="tig"
+   else
+	base="master"
+   fi
+
+   git checkout "$base"
    git pull
-   git checkout $xx
-   git checkout -b rctig/$2 tig
-   git push --set-upstream origin rctig/$2;;
- p) 
-    git checkout -b rcprd/$2 master
-    git push --set-upstream origin rcprd/$2;;
+   git checkout -b $1/$2 "$base"
+   git tag -a "s-$1/$2" -m "Starting $1/$2 from $base"
+   git push --set-upstream origin $1/$2;;
 esac
