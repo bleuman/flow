@@ -22,7 +22,7 @@ fi
 
 case $1 in 
  du | ap | ar | p | t )
-   if [ `git tag -l "s-$1/$2"` == "s-$1/$2" ]
+   if [ "`git tag -l "s-$1/$2"`" == "s-$1/$2" ]
    then
 	echo "$1/$2 deja cree"
 	exit
