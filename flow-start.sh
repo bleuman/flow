@@ -25,6 +25,7 @@ git pull
 case $1 in 
  du | ap | ar)
    git checkout -b $1/$2 master
+   git tag -a "s-$1/$2" -m "Starting $1/$2 from master"
    git push --set-upstream origin $1/$2;;
  t)
    echo -e "${yel}>flow update form origin :tig${end}"
