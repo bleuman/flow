@@ -26,9 +26,9 @@ du | ap | ar )git fetch && git checkout $1/$2;;
 t | p)
  if [ "$1" == "t" ] 
   then
-   br=`git branch |grep -v \* | grep rctig/`
+   br=`git branch |grep -v \* | grep t/`
   else
-   br=`git branch |grep -v \* | grep rcprd/`
+   br=`git branch |grep -v \* | grep p/`
  fi
   if [ "$br" != "" ] 
   then
