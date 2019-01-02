@@ -44,5 +44,5 @@ t | p)
 tig) git fetch && git checkout tig;;
 prd)git fetch && git checkout master;;
 r)git fetch && git checkout -b $2 origin/$2;;
-*) checkout $1;;
+*) git checkout $1;;
 esac
