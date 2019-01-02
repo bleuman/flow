@@ -23,9 +23,10 @@ then
 	exit
 fi
 
-if ["`isWorkTreeClean`" != "0"]
+if [ "`isWorkTreeClean`" != "0" ]
 then 
 	echo "Travail non commité, veuillez commiter les modifications en cours avant de poursuivre"
+	exit
 fi
 case $1 in 
 du | ap | ar )git fetch && git checkout $1/$2;;
