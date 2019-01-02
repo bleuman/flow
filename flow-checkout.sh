@@ -7,6 +7,7 @@ mag=$'\e[1;35m'
 cyn=$'\e[1;36m' 
 end=$'\e[0m'
 
+source flow-utils.sh
 
 echo -e "${yel}>flow.checkout with params $1 $2 $3${end}"
 if [ "$1" == "" ]
@@ -20,6 +21,11 @@ then
 	r) git checkout -b 2 origin/2
 	"
 	exit
+fi
+
+if ["`isWorkTreeClean`" != "0"]
+then 
+	echo "Travail non commité, veuillez commiter les modifications en cours avant de poursuivre"
 fi
 case $1 in 
 du | ap | ar )git fetch && git checkout $1/$2;;
