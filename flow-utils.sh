@@ -24,6 +24,10 @@ pullAll(){
 pushAll(){
 	git push --all --tags origin
 }
-isWorkTreeClean(){
+isWorkTreeClean()t{
 	echo `git status -s | wc -l`
 }
+isCurrent(){
+	echo `git branch | grep '\*$1/' | wc -l `	
+}
+
