@@ -23,6 +23,10 @@ then
 	exit
 fi
 
+echo "......................................."
+isCurrent "du"
+echo "......................................."
+
 if [ "`isWorkTreeClean`" != "0" ]
 then 
 	echo "Travail non commité, veuillez commiter les modifications en cours avant de poursuivre"
