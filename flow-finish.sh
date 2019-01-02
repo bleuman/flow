@@ -56,5 +56,8 @@ case $1 in
 		git push --tags
 		git branch -d p/$2
 		git push origin --delete p/$2;;
+	del)
+		git branch -d $2
+		git push origin --delete $2;;
 esac
 	
