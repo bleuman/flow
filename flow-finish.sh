@@ -46,7 +46,7 @@ case $1 in
 		git checkout tig
 		git merge t/$2
 		git tag -a "vt$2" -m "tag msg: $3"
-		git push --tags
+		git push --tags --all
 		git branch -d t/$2
 		git push origin --delete t/$2;;
 	p)
