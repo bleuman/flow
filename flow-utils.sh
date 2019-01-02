@@ -24,3 +24,6 @@ pullAll(){
 pushAll(){
 	git push --all --tags origin
 }
+isWorkTreeClean(){
+	echo `git status -s | wc -l`
+}

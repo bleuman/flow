@@ -9,7 +9,11 @@ end=$'\e[0m'
 
 
 echo -e "${yel}>flow.rebase with params $1 $2 $3${end}"
-if [ "$1" == "" ]
+if [ "$1" != "0" ]
+then
+	echo "Travail non commité, veuillez commiter avant de poursuivre"
+	exit
+fi
 then
 	echo "
 	Usage : 
