@@ -7,29 +7,30 @@ mag=$'\e[1;35m'
 cyn=$'\e[1;36m' 
 end=$'\e[0m'
 
+arg1="$1"
+arg2="$2"
 
 echo -e "${yel}>flow.start with params $1 ${end}"
-if [ "$1" == ""  ] || [ "$2" == ""  ]
+
+if [ "$arg1" == ""  ]
 then
-	echo "
-	Usage : 
-	du | ap | ar)  
-	t)
-	p)    
-	"
-	exit
+	read -p "Start ticket du/ap/ar/ p/t" arg1
 fi
 
-case $1 in 
+if [ "$arg2" == ""  ]
+then
+	read -p "Start $arg1/" arg2
+fi
+case $arg1 in 
  du | ap | ar | p | t )
-   if [ "`git tag -l "s-$1/$2"`" == "s-$1/$2" ]
+   if [ "`git tag -l "s-$arg1/$arg2"`" == "s-$arg1/$arg2" ]
    then
-	echo "$1/$2 deja cree"
+	echo "$arg1/$arg2 deja cree"
 	exit
    fi
 
    base="master"
-   if [ "$1" == "t" ]
+   if [ "$arg1" == "t" ]
    then
 	base="tig"
    else
@@ -38,7 +39,7 @@ case $1 in
 
    git checkout "$base"
    git pull
-   git checkout -b $1/$2 "$base"
-   git tag -a "s-$1/$2" -m "Starting $1/$2 from $base"
-   git push --set-upstream origin $1/$2;;
+   git checkout -b $arg1/$arg2 "$base"
+   git tag -a "s-$arg1/$arg2" -m "Starting $arg1/$arg2 from $base"
+   git push --set-upstream origin $arg1/$arg2;;
 esac
