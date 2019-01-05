@@ -31,7 +31,6 @@ git checkout $xx
 case $1 in 
 	du)
 	ic=`isCurrent t`
-	echo "***************$ic*****************"
         if [ "$ic" != "1" ]
         then
           echo "-Vous n'etes pas sur une RC TIG"
