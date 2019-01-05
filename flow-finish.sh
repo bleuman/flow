@@ -29,7 +29,7 @@ git pull
 git checkout $xx
 case $1 in 
 	du)
-        if ["`isCurrent 't/'`" != "1" ]
+        if [ "`isCurrent 't/'`" != "1" ]
         then
           echo "vous n'etes pas sur une RC TIG"
          exit   
