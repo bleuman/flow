@@ -20,7 +20,7 @@ then
 	prd) git checkout master
 	r) git checkout -b 2 origin/2
 	"
-	read -p arg "enter command"
+	read -p "enter command" arg
 	echo "****** $arg"
 	exit
 fi
