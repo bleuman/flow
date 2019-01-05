@@ -34,7 +34,7 @@ case $1 in
 	echo "***************$ic*****************"`
         if [ "$ic" != "1" ]
         then
-          echo "vous n'etes pas sur une RC TIG"
+          echo "-Vous n'etes pas sur une RC TIG"
          exit   
         fi
 		xx=`git branch | grep \* | cut -d ' ' -f2`
