@@ -14,7 +14,7 @@ echo -e "${yel}>flow.start with params $1 ${end}"
 
 if [ "$arg1" == ""  ]
 then
-	read -p "Start ticket du/ap/ar/ p/t" arg1
+	read -p "Start ticket: du/ap/ar/p/t : " arg1
 fi
 
 if [ "$arg2" == ""  ]
