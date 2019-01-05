@@ -7,6 +7,7 @@ mag=$'\e[1;35m'
 cyn=$'\e[1;36m' 
 end=$'\e[0m'
 
+source flow-utils.sh
 
 echo -e "${yel}>flow.finish with params $1 ${end}"
 
