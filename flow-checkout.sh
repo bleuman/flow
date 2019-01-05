@@ -15,17 +15,7 @@ arg3="$3"
 echo -e "${yel}>flow.checkout with params $1 $2 $3${end}"
 if [ "$arg" == "" ]
 then
-	echo "
-	Usage : 
-	du | ap | ar )git checkout 1/2
-	t | p) git branch  rctig| rcprd
-	tig) git checkout tig
-	prd) git checkout master
-	r) git checkout -b 2 origin/2
-	"
-	read -p "enter arg : " arg
-	echo "****** $arg"
-	#exit
+	read -p "enter arg : (du/ap/ar/t/p/tig/prd)" arg
 fi
 
 if [ "`isWorkTreeClean`" != "0" ]
@@ -53,6 +43,11 @@ t | p)
   fi;;
 tig) git fetch && git checkout tig;;
 prd)git fetch && git checkout master;;
-r)git fetch && git checkout -b $arg2 origin/$arg2;;
+r)	
+	if [ "$arg2" == "" ] 
+	then
+	  read -p "git checkout -b ? origin/" arg2
+	fi
+	git fetch && git checkout -b $arg2 origin/$arg2;;
 *) git checkout $arg;;
 esac
