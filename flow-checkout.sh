@@ -8,9 +8,12 @@ cyn=$'\e[1;36m'
 end=$'\e[0m'
 
 source flow-utils.sh
+arg="$1"
+arg2="$2"
+arg3="$3"
 
 echo -e "${yel}>flow.checkout with params $1 $2 $3${end}"
-if [ "$1" == "" ]
+if [ "$arg" == "" ]
 then
 	echo "
 	Usage : 
@@ -20,24 +23,25 @@ then
 	prd) git checkout master
 	r) git checkout -b 2 origin/2
 	"
-	read -p "enter command : " arg
+	read -p "enter arg : " arg
 	echo "****** $arg"
-	exit
+	#exit
 fi
-
-echo "......................................."
-isCurrent "du"
-echo "......................................."
 
 if [ "`isWorkTreeClean`" != "0" ]
 then 
 	echo "Travail non commité, veuillez commiter les modifications en cours avant de poursuivre"
 	exit
 fi
-case $1 in 
-du | ap | ar )git fetch && git checkout $1/$2;;
+case $arg in 
+du | ap | ar )
+	if [ "$arg2" == "" ] 
+	then
+	  read -p "enter arg2 : $arg/" arg2
+	fi
+	git fetch && git checkout $arg/$arg2;;
 t | p)
- if [ "$1" == "t" ] 
+ if [ "$arg" == "t" ] 
   then
    br=`git branch |grep -v \* | grep t/`
   else
@@ -49,6 +53,6 @@ t | p)
   fi;;
 tig) git fetch && git checkout tig;;
 prd)git fetch && git checkout master;;
-r)git fetch && git checkout -b $2 origin/$2;;
-*) git checkout $1;;
+r)git fetch && git checkout -b $arg2 origin/$arg2;;
+*) git checkout $arg;;
 esac
