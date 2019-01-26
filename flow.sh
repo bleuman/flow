@@ -40,7 +40,7 @@ case $1 in
 	pl) git pull --all;;
 	ps) git push --tags;;
 	psa) git push --all origin;;
-	psax git push --all $2;;
+	psax) git push --all $2;;
 	m) git mergetool --tool=vimdiff;;
 	g) git tag -ln $2;;
 	a) git add --all;;
